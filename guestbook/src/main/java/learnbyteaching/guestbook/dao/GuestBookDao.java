@@ -4,7 +4,6 @@ import java.util.List;
 
 import learnbyteaching.guestbook.vo.BookVo;
 
-
 // interface 
 // 구체적인 동작(코드)은 정의하지 않고 
 // 기능의 약속(틀)만 정의 
@@ -21,7 +20,7 @@ public interface GuestBookDao {
 	// 특정 도서 데이터를 데이터베이스에서 삭제하는 기능 정의
 	// Long no: 삭제할 도서 데이터의 고유 ID(번호) 
 	// boolean: 데이터 삽입이 성공하면 true, 실패하면 false 반환 
-	public boolean delete(Long no);
+	public boolean delete(Integer no, String password);
 
 	
 	

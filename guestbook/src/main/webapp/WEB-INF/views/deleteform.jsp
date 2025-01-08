@@ -11,7 +11,7 @@
 </head>
 <body>
 <div class="container mt-5">
-    <form method="post" action="delete.jsp">
+    <form method="post" action="<%= request.getContextPath() %>/gb">
         <input type='hidden' name="no" value="<%= request.getParameter("no") %>">
         <div class="mb-3">
             <label for="password" class="form-label">비밀번호</label>

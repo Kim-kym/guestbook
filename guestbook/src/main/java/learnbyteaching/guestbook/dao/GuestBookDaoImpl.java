@@ -33,25 +33,25 @@ public class GuestBookDaoImpl
 		ResultSet rs = null; 
 		try {
 			conn = getConnection();
-			String sql = "SELET no, last_name, first_name, email, created_at " +
-					"FROM guestbook ORDER BY created_at DESC";
+			String sql = "SELECT no, name, password, content, reg_date " +
+					"FROM guestbook ORDER BY reg_date DESC";
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery(sql);
 			
 			// rs.next(): 결과 데이터를 한 줄씩 읽어오기 
 			while (rs.next()) {
-				Long no = rs.getLong(1);
+				Integer no = rs.getInt(1);
 				String name = rs.getString(2);
 				String password = rs.getString(3);
 				String content = rs.getString(4); 
-				Date reg_date = rs.getDate(5); 
+				Date regDate = rs.getDate(5); 
 				
 				// 도서 데이터를 담는 객체 
 				BookVo info = new BookVo(no,
 						name,
 						password,
 						content,
-						reg_date);
+						regDate);
 				// 리스트에 도서 데이터 추가 
 				list.add(info);
 				}
@@ -80,14 +80,14 @@ public class GuestBookDaoImpl
 		try { 
 			conn = getConnection(); 
 			
-			String sql = "INSERT INTO emaillist " +
+			String sql = "INSERT INTO guestbook " +
 					"(name, password, content) " + 
 					"VALUES (?, ?, ?)"; 
 			// pstmt: 나중에 설정할 값
 			// executeUpdate: 쿼리 실행 및 반환
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1,  vo.getName());
-			pstmt.setString(2,  vo.getPassword());
+			pstmt.setString(1, vo.getName());
+			pstmt.setString(2, vo.getPassword());
 			pstmt.setString(3, vo.getContent());
 			insertedCount = pstmt.executeUpdate();
 		} catch (Exception e) {
@@ -106,17 +106,18 @@ public class GuestBookDaoImpl
 	
 	//  특정 번호의 도서 데이터 삭제 
 	@Override 
-	public boolean delete(Long no) {
+	public boolean delete(Integer no, String password) {
 		int deletedCount = 0;
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		
 		try {
 			conn = getConnection();
-			String sql = "DELETE FROM guestbook WHERE no=?";
+			String sql = "DELETE FROM guestbook WHERE no=? AND password=?";
 			// 삭제하려는 데이터의 번호(no) 설정 
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setLong(1, no);
+			pstmt.setInt(1, no);
+			pstmt.setString(2,  password);
 			deletedCount = pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();

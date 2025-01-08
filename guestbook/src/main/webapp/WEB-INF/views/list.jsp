@@ -26,7 +26,7 @@ List<BookVo> list = dao.getList();
 <div class="container mt-5">
     <form action="add.jsp" method="POST">
         <div class="mb-3">
-            <label for="name" class="form-label">이름 (Model 1)</label>
+            <label for="name" class="form-label">이름 (Model 2)</label>
             <input type="text" class="form-control" id="name" name="name">
         </div>
         <div class="mb-3">

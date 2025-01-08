@@ -4,40 +4,39 @@ import java.util.Date;
 
 public class BookVo {
 	// Fields
-	private Long no;
+	private Integer no;
 	private String name; 
 	private String password;
 	private String content; 
-	private Date reg_date;
+	private Date regDate;
 	
 //	Constructor 
-	public BookVo(Long no, 
+	public BookVo(Integer no, 
 			String name, 
 			String password, 
 			String content, 
-			Date reg_date) {
+			Date regDate) {
 		super();
 		this.no = no;
 		this.name = name;
 		this.password = password;
 		this.content = content;
-		this.reg_date = reg_date;
+		this.regDate = regDate;
 	}
 
 	public BookVo(String name, 
 			String password, 
 			String content) {
-		super();
 		this.name = name;
 		this.password = password;
 		this.content = content;
 	}
 
-	public Long getNo() {
+	public Integer getNo() {
 		return no;
 	}
 
-	public void setNo(Long no) {
+	public void setNo(Integer no) {
 		this.no = no;
 	}
 
@@ -65,18 +64,18 @@ public class BookVo {
 		this.content = content;
 	}
 
-	public Date getReg_date() {
-		return reg_date;
+	public Date getRegDate() {
+		return regDate;
 	}
 
-	public void setReg_date(Date reg_date) {
-		this.reg_date = reg_date;
+	public void setRegDate(Date regDate) {
+		this.regDate = regDate;
 	}
 
 	@Override
 	public String toString() {
-		return "BookVo [no=" + no + ", name=" + name + ", password=" + password + ", content=" + content + ", reg_date="
-				+ reg_date + "]";
+		return "BookVo [no=" + no + ", name=" + name + ", password=" + password + ", content=" + content + ", regDate="
+				+ regDate + "]";
 	}
 	
 }
